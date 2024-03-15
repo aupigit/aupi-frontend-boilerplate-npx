@@ -5,7 +5,6 @@ on:
     branches:
       - main
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,8 +16,29 @@ jobs:
       - run: npm i    
       - run: npm ci
 
-  publish-npm:
+  version-bump:
     needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Bump version and push tag
+        uses: mathieudutour/github-tag-action@v5
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          push: true
+          tag: v${{ steps.get_version.outputs.version }}
+          message: "Bump version to v${{ steps.get_version.outputs.version }}"
+          prefix: "v"
+
+  get_version:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get version
+        id: get_version
+        run: echo ::set-output name=version::$(node -p "require('./package.json').version")
+
+  publish-npm:
+    needs: version-bump
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -35,4 +55,3 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
-
