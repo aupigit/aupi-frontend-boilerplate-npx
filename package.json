@@ -6,7 +6,13 @@
   "bin": {
     "aupi-frontend-boilerplate": "create-aupi-front.mjs"
   },
-  "keywords": ["react", "next" , "next.js" , "expo" , "react-native"],
+  "keywords": [
+    "react",
+    "next",
+    "next.js",
+    "expo",
+    "react-native"
+  ],
   "author": "Aupi soluções em TI",
   "license": "ISC",
   "main": "create-aupi-front.ts",
@@ -23,6 +29,7 @@
     "readline-sync": "^1.4.10"
   },
   "devDependencies": {
+    "@rocketseat/eslint-config": "2.2.2",
     "@types/node": "^20.11.27",
     "@types/react": "^18",
     "@types/react-dom": "^18",

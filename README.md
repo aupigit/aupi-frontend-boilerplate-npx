@@ -16,7 +16,7 @@ You can create a new project interactively by running:
  You will be asked for the name of your project, and then whether what pattern you want to use:
 
  ```bash
-? Escolha o tipo de projeto: (Use arrow keys)
+? Choose the type of project: (Use arrow keys)
 ❯ web 
   mobile 
  ```
