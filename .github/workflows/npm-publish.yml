@@ -28,6 +28,8 @@ jobs:
           git config --global user.name "GitHub Actions"
       - name: Update package.json version
         run: npm version minor
+      - name: Git pull to recieve branch main
+        run: git pull
       - name: Git push to the new version of my package.json
         run: git push -u main
       - name: Publish package on NPM 📦
