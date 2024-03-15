@@ -37,6 +37,7 @@ jobs:
 
       - name: Git push to the new version of my package.json
         run: |
+          git pull
           git push origin main
 
       - name: Pack modification
