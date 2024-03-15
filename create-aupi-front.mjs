@@ -9,7 +9,6 @@ import { join } from 'path'
 import inquirer from 'inquirer'
 import readlineSync from 'readline-sync'
 
-// URLs dos repositórios GitHub
 const repositoryUrls = {
   web: 'https://github.com/aupigit/aupi-web-frontend-boilerplate.git',
   mobile: 'https://github.com/aupigit/aupi-mobile-frontend-boilerplate.git',
@@ -21,7 +20,6 @@ console.log(
   ),
 )
 
-// Verificar se pnpm está instalado
 exec('pnpm --version', (pnpmCheckError) => {
   if (pnpmCheckError) {
     console.log(chalk.yellow.bold('pnpm not found. You want to install pnpm?'))
@@ -71,7 +69,6 @@ function installPnpmGlobal() {
 }
 
 function checkBun() {
-  // Verificar se bun está instalado
   exec('bun --version', (bunCheckError) => {
     if (bunCheckError) {
       console.log(chalk.yellow.bold('bun not found. You want to install bun?'))
@@ -122,22 +119,18 @@ function installBunGlobal() {
 }
 
 function cloneRepository() {
-  // Diretório de destino onde o repositório será clonado
   let projectName = readlineSync.question(
     chalk.blue.bold('? ') +
       chalk.white.bold('What is your project named? ') +
       chalk.gray('› '),
   )
 
-  // Define 'my-app' como o nome padrão se nenhum nome for fornecido
   if (!projectName) {
     projectName = 'my-app'
   }
 
-  // Diretório de destino onde o repositório será clonado
   const destinationPath = join(process.cwd(), projectName)
 
-  // Solicitar ao usuário que escolha entre web ou mobile
   inquirer
     .prompt([
       {
@@ -166,7 +159,6 @@ function cloneRepository() {
           process.exit(1)
         }
 
-        // Instalar dependências
         const installCommand =
           chosenOption === 'web' ? 'pnpm install' : 'bun install'
         const installSpinner = ['-', '\\', '|', '/']
@@ -194,7 +186,6 @@ function cloneRepository() {
           )
         })
 
-        // Remover diretório .git
         exec('rm -rf .git', { cwd: destinationPath }, (rmError) => {
           if (rmError) {
             console.error(`Error removing .git: ${rmError}`)
@@ -202,7 +193,6 @@ function cloneRepository() {
           }
         })
 
-        // Imprimir uma mensagem de boas-vindas
         console.log(
           chalk.blue(
             figlet.textSync('AUPI', {
