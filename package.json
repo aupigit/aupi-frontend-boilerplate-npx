@@ -1,12 +1,18 @@
 {
   "name": "aupi-frontend-boilerplate",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "An boilerplate for web and mobile aplications used by us, Aupi :)",
   "type": "module",
   "bin": {
     "aupi-frontend-boilerplate": "create-aupi-front.mjs"
   },
-  "keywords": ["react", "next" , "next.js" , "expo" , "react-native"],
+  "keywords": [
+    "react",
+    "next",
+    "next.js",
+    "expo",
+    "react-native"
+  ],
   "author": "Aupi soluções em TI",
   "license": "ISC",
   "main": "create-aupi-front.ts",
