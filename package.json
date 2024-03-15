@@ -1,10 +1,10 @@
 {
-  "name": "aupi-teste",
-  "version": "2.0.5",
-  "description": "",
+  "name": "aupi-frontend-boilerplate",
+  "version": "0.1.1",
+  "description": "An boilerplate for web and mobile aplications used by us, Aupi :)",
   "type": "module",
   "bin": {
-    "aupi-teste": "create-aupi-front.mjs"
+    "aupi-frontend-boilerplate": "create-aupi-front.mjs"
   },
   "keywords": ["react", "next" , "next.js" , "expo" , "react-native"],
   "author": "Aupi soluções em TI",
@@ -31,7 +31,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/uBrunoow/npx-aupi-teste.git"
+    "url": "https://github.com/aupigit/aupi-frontend-boilerplate-npx.git"
   },
-  "homepage": "https://aupi.com.br"
+  "homepage": "https://github.com/aupigit/aupi-frontend-boilerplate-npx"
 }
