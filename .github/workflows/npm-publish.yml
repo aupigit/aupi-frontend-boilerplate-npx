@@ -5,38 +5,37 @@ on:
   push:
     branches:
       - main
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup Node
+
+      - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18'
-          registry-url: 'https://registry.npmjs.org'
+          node-version: '20' # Defina a versão do Node.js aqui
+
       - name: Install dependencies
-        run: npm i
-      - name: Run CI 🔧
         run: npm ci
-      - name: Authenticate with NPM 🔑
+
+      - name: Authenticate with NPM
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
+
       - name: Git configuration
         run: |
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global user.name "GitHub Actions"
 
-      - name: Git checkout to enter in the branch
-        run: git checkout ${{ github.ref }}
-
-      - name: Git pull to receive the latest changes
-        run: git pull
-
       - name: Update package.json version
         run: npm version minor
-      - name: Git push to update the package.json
-        run: git push
-      - name: Publish package on NPM 📦
+
+      - name: Git push to the new version of my package.json
+        run: |
+          git add .
+          git commit -m "Bump version"
+          git push origin main
+
+      - name: Publish package on NPM
         run: npm publish
