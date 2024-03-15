@@ -11,8 +11,8 @@ import readlineSync from 'readline-sync';
 
 // URLs dos repositórios GitHub
 const repositoryUrls = {
-    web: 'https://github.com/uBrunoow/create-aupi-front.git',
-    mobile: 'https://github.com/uBrunoow/create-aupi-front-mobile.git'
+    web: 'https://github.com/aupigit/aupi-web-frontend-boilerplate.git',
+    mobile: 'https://github.com/aupigit/aupi-mobile-frontend-boilerplate.git'
 };
 
 console.log(chalk.blue.bold('Bem-vindo ao executável boilerplate da Aupi. Para rodar isso você precisa estar em um Linux!'));
