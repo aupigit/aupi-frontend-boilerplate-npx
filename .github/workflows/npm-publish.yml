@@ -37,6 +37,9 @@ jobs:
         run: |
           git push origin main
 
+      - name: Pack modification
+        run: npm pack
+
       - name: Publish package on NPM
         run: npm publish  --access public
 
