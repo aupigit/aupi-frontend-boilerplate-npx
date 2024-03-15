@@ -27,6 +27,9 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global user.name "GitHub Actions"
 
+      - name: Git checkout to enter in the branch main
+        run: git checkout main
+
       - name: Git pull to recieve branch main
         run: git pull
       
