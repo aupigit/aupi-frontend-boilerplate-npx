@@ -44,6 +44,7 @@ jobs:
 
       - name: Publish package on NPM
         run: | 
+          npm install
           npm config set registry https://registry.npmjs.org/
           npm publish  --access public
 
