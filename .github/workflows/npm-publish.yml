@@ -23,7 +23,7 @@ jobs:
           npm ci
 
       - name: Authenticate with NPM
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN.NPM_AUTH_TOKEN }}" > ~/.npmrc
+        run: echo "//registry.npmjs.org/:_authToken=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" > ~/.npmrc
 
       - name: Git configuration
         run: |
