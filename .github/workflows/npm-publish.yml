@@ -24,8 +24,8 @@ jobs:
 
       - name: Login to npm
         run: npm login --registry=https://registry.npmjs.org/ --scope=@your-scope --always-auth=false <<EOF
-        ${{ secrets.NPM_AUTH_TOKEN }}
-        EOF
+          ${{ secrets.NPM_AUTH_TOKEN }}
+          EOF
 
       - name: Git configuration
         run: |
