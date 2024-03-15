@@ -22,8 +22,10 @@ jobs:
           npm i          
           npm ci
 
-      - name: Authenticate with NPM
-        run: echo "//registry.npmjs.org/:_authToken=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" > ~/.npmrc
+      - name: Login to npm
+        run: npm login --registry=https://registry.npmjs.org/ --scope=@your-scope --always-auth=false <<EOF
+        ${{ secrets.NPM_AUTH_TOKEN }}
+        EOF
 
       - name: Git configuration
         run: |
