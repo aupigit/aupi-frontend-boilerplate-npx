@@ -42,3 +42,5 @@ jobs:
 
       - name: Git pull to receive the modifications
         run: git pull
+    env:
+      NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
