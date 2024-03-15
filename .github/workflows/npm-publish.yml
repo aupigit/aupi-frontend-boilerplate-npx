@@ -39,3 +39,6 @@ jobs:
 
       - name: Publish package on NPM
         run: npm publish
+
+      - name: Git pull to receive the modifications
+        run: git pull
