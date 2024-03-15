@@ -1,6 +1,9 @@
 {
   "name": "aupi-frontend-boilerplate",
   "version": "0.7.0",
+  "workspaces": [
+    "packages/*"
+  ],
   "description": "An boilerplate for web and mobile aplications used by us, Aupi :)",
   "type": "module",
   "bin": {
