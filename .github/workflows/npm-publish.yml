@@ -24,14 +24,13 @@ jobs:
         uses: mathieudutour/github-tag-action@v5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          push: true
-          tag: v${{ steps.get_version.outputs.version }}
-          message: "Bump version to v${{ steps.get_version.outputs.version }}"
-          prefix: "v"
+          custom_tag: ${{ steps.get_version.outputs.version }}
+          create_annotated_tag: true
       - name: Get version
         id: get_version
-        run: echo ::set-output name=version::$(node -p "require('${{ github.workspace }}/package.json').version")
-
+        run: |
+          cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g' | tr -d '[[:space:]]' | awk -Fv '{ print $2 }'
+  
 
   publish-npm:
     needs: version-bump
