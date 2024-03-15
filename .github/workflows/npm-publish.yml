@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -27,15 +28,15 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global user.name "GitHub Actions"
 
-      - name: Git checkout to enter in the branch main
-        run: git checkout main
+      - name: Git checkout to enter in the branch
+        run: git checkout ${{ github.ref }}
 
-      - name: Git pull to recieve branch main
+      - name: Git pull to receive the latest changes
         run: git pull
-      
+
       - name: Update package.json version
         run: npm version minor
-      - name: Git push to the new version of my package.json
-        run: git push -u main
+      - name: Git push to update the package.json
+        run: git push
       - name: Publish package on NPM 📦
         run: npm publish
