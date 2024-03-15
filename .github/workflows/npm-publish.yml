@@ -28,9 +28,7 @@ jobs:
           create_annotated_tag: true
       - name: Get version
         id: get_version
-        run: |
-          cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g' | tr -d '[[:space:]]' | awk -Fv '{ print $2 }'
-  
+        run: cat ../../package.json  
 
   publish-npm:
     needs: version-bump
