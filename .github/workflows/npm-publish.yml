@@ -1,8 +1,10 @@
 name: Node.js Package (Aupi Boilerplate)
 
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - main
+
 
 jobs:
   build:
