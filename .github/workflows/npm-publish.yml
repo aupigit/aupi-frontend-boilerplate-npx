@@ -8,24 +8,29 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
+    steps: #
       - name: Checkout
         uses: actions/checkout@v2
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20' 
+          node-version: '20' # Defina a versão do Node.js aqui
 
       - name: Install dependencies
-        run: |
-          npm i        
+        run: | 
+          npm i          
           npm ci
 
       - name: Login to npm
         run: npm login --registry=https://registry.npmjs.org/ --scope=@your-scope --always-auth=false <<EOF
           ${{ secrets.NPM_AUTH_TOKEN }}
           EOF
+
+      - name: Git configuration
+        run: |
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "GitHub Actions"
 
       - name: Update package.json version
         run: npm version minor
@@ -40,7 +45,9 @@ jobs:
 
       - name: Publish package on NPM
         run: | 
-          npm publish --access public
+          npm install
+          npm config set registry https://registry.npmjs.org/
+          npm publish  --access public
 
       - name: Git pull to receive the modifications
         run: git pull
