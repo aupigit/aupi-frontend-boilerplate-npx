@@ -22,6 +22,10 @@ jobs:
         run: npm ci
       - name: Authenticate with NPM 🔑
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
+      - name: Git configuration
+        run: |
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "GitHub Actions"
       - name: Update package.json version
         run: npm version minor
       - name: Publish package on NPM 📦
