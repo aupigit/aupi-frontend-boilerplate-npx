@@ -3,11 +3,15 @@
 
 import chalk from 'chalk'
 import { exec } from 'child_process'
-import figlet from 'figlet'
-import { existsSync, mkdirSync } from 'fs'
-import { join } from 'path'
+// import figlet from 'figlet'
+import { existsSync, mkdirSync, readFileSync } from 'fs'
+import { join, dirname } from 'path'
 import inquirer from 'inquirer'
 import readlineSync from 'readline-sync'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 const repositoryUrls = {
   web: 'https://github.com/aupigit/aupi-web-frontend-boilerplate.git',
@@ -193,14 +197,9 @@ function cloneRepository() {
           }
         })
 
-        console.log(
-          chalk.blue(
-            figlet.textSync('AUPI', {
-              horizontalLayout: 'full',
-              verticalLayout: 'full',
-            }),
-          ),
-        )
+        const output = readFileSync(join(__dirname, 'output.txt'), 'utf8')
+
+        console.log(output)
       })
     })
 }
